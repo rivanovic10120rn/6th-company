@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ id }}
+    <h2> {{ squads }} </h2>
   </div>
 </template>
 
@@ -9,12 +9,8 @@
     export default {
         name: 'Company',
 
-        components: {
-
-        },
-
         props: {
-          id: Array 
+          squads: Array 
         }
     }
 

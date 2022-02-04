@@ -3,10 +3,10 @@
     <Header :title="title" />
     <p>
       <button @click="prev()">Previous</button>
-      <span> . . . </span>
+      <span> ... </span>
       <button @click="next()">Next</button>
     </p>
-    <Company v-if="id" :id="id.slice(current * 10, (current + 1) * 10)" />
+    <Company v-if="id" :squads="id.slice(current * 10, (current + 1) * 10)" />
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -17,8 +17,8 @@
 
 <script>
 
-  import Header from './components/Header.vue';
-  import Company from './components/Company.vue';
+  import Header from '@/components/Header.vue';
+  import Company from '@/components/Company.vue';
 
   export default {
     name: 'App',
@@ -38,15 +38,15 @@
 
     mounted() {
       fetch('http://localhost:8080/admin/squads')
-        .then( obj => obj.json())
+        .then( obj => obj.json() )
           .then( res => {
             this.id = res.id;
-          })
+          });
     },
 
     methods: {
       next() {
-        if(this.current * 10 < this.current.length){
+        if(this.current * 10 < this.id.length){
           this.current++;
         }
       },
