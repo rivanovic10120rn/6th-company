@@ -1,18 +1,24 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header subtitle="Overview"/>
+    <img alt="chapter banner held" width="1100" src="https://cdnb.artstation.com/p/assets/images/images/034/657/147/4k/klaher-baklaher-bloodangels2.jpg?1612876829">
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Header
   }
 }
 </script>
+
+<style scoped>
+  .home {
+    font-family: 'old-english-text-mt-regular', sans-serif;
+  }
+</style>

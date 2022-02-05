@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <Header :title="title" />
-    <p>
-      <button @click="prev()">Previous</button>
-      <span> ... </span>
-      <button @click="next()">Next</button>
-    </p>
-    <Company v-if="id" :squads="id.slice(current * 10, (current + 1) * 10)" />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div >
+      <b-navbar id="nav" toggleable="lg" type="dark" >
+        <b-navbar-brand to="/"><b-icon-droplet-fill variant="danger"></b-icon-droplet-fill> 6th Company</b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item to="/squads">Overview</b-nav-item>
+            <b-nav-item to="/soldiers" >Soldiers</b-nav-item>
+            <b-nav-item to="/loadouts">Loadouts</b-nav-item>
+            <b-nav-item to="/missions" >Missions</b-nav-item>
+          </b-navbar-nav>
+
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item-dropdown right>
+              <!-- Using 'button-content' slot -->
+              <template #button-content>
+                <em>Soldier</em>
+              </template>
+              <b-dropdown-item href="#">Profile</b-dropdown-item>
+              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
-    <router-view/> -->
+    <router-view/>
   </div>
 </template>
 
@@ -30,19 +47,21 @@
 
     data() {
       return {
-        title: 'Blood Angels 6th Company',
-        id: null,
-        current: 0
+        // id: [],
+        // current: 0
       }
     },
 
-    mounted() {
-      fetch('http://localhost:8080/admin/squads')
-        .then( obj => obj.json() )
-          .then( res => {
-            this.id = res.id;
-          });
-    },
+    // mounted() {
+    //   fetch('http://localhost:8080/admin/squads')
+    //     .then( obj => obj.json() )
+    //       .then( res => {
+    //         res.forEach( data => {
+    //           this.id = data.id;
+    //         })
+    //         console.log(res);
+    //       });
+    // },
 
     methods: {
       next() {
@@ -55,7 +74,7 @@
         if(this.current !== 0){
           this.current--;
         }
-      }
+      },
     }
 
   }
@@ -72,15 +91,7 @@
 }
 
 #nav {
-  padding: 30px;
+  background-color:#212222;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
