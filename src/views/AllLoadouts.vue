@@ -3,7 +3,7 @@
     <Header subtitle="Loadouts"/>
     <div class="row">
       <div class="column">
-        <img alt="horizontal-drapery" width="450" src="https://i.pinimg.com/originals/86/db/ef/86dbef16f5020b7101518bc3b1a17b23.jpg">
+        <img alt="horizontal-drapery"  src="https://i.pinimg.com/736x/a7/c3/4b/a7c34b1489e0d7a5a463f3e73ebe069f.jpg">
       </div>
       <div class="column">
 
@@ -28,9 +28,13 @@ export default {
 </script>
 
 <style scoped>
+  .row {
+    width: 2543px;
+  }
+
   .column {
     float: left;
-    width: 33.33%;
+    width: 50%;
     padding: 5px;
   }
 

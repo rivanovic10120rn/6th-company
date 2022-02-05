@@ -3,7 +3,7 @@
     <Header subtitle="Soldiers"/>
     <div class="row">
       <div class="column">
-        <img alt="horizontal-drapery" width="550" src="https://i.pinimg.com/originals/09/1e/5a/091e5a971812ff2f78380723679511da.jpg">
+        <img alt="horizontal-drapery" width="550" src="https://warhammerart.com/wp-content/uploads/2018/01/Blood-Angels-Command-Company.jpg">
       </div>
       <div class="column">
 
@@ -28,9 +28,13 @@ export default {
 </script>
 
 <style scoped>
+  .row {
+    width: 2543px;
+  }
+
   .column {
     float: left;
-    width: 33.33%;
+    width: 50%;
     padding: 5px;
   }
 

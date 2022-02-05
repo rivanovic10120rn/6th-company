@@ -35,14 +35,14 @@
 <script>
 
   import Header from '@/components/Header.vue';
-  import Company from '@/components/Company.vue';
+  import SquadList from '@/components/SquadList.vue';
 
   export default {
     name: 'App',
 
     components: {
       Header,
-      Company
+      SquadList
     },
 
     data() {

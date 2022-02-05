@@ -6,58 +6,60 @@
         <img alt="horizontal-drapery" width="750" src="https://pbs.twimg.com/media/EnxljX5W8AACAW2.jpg">
       </div>
       <div class="column">
-
+        <SquadList v-if="allSquads" :squads="allSquads" />
       </div>
     </div>
-    
-    
-    <ImageList v-if="imageIDs" :objects="imageIDs" />
   </div>
 </template>
 
 <script>
   import Header from '@/components/Header.vue';
-  // import ImageList from '@/components/ImageList.vue';
+  import SquadList from '@/components/SquadList.vue';
 
   export default {
     name: 'Squads',
     
     components: {
       Header,
-      // ImageList
+      SquadList
     },
 
     data() {
         return {
             subtitle: '',
-            depID: null,
-            imageIDs: null
+            allSquads: []
         }
     },
 
-    watch: {
-      $route() {
-        this.subtitle = this.$route.params.name;
-        this.depID = this.$route.params.id;
+    // watch: {
+    //   $route() {
+    //     this.subtitle = this.$route.params.name;
+    //     this.depID = this.$route.params.id;
 
-      }
-    },
+    //   }
+    // },
 
     mounted() {
-        this.subtitle = this.$route.params.name;
-        this.depID = this.$route.params.id;
+        // this.subtitle = this.$route.params.name;
+        // this.depID = this.$route.params.id;
 
-        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${this.depID}`)
+        fetch('http://localhost:8080/admin/squads')
             .then( obj => obj.json() )
-            .then( res => this.imageIDs = res.objectIDs );
+            .then( res => {
+              this.allSquads = res;
+            });
     }
   }
 </script>
 
 <style scoped>
+  .row {
+    width: 2543px;
+  }
+
   .column {
     float: left;
-    width: 33.33%;
+    width: 50%;
     padding: 5px;
   }
 

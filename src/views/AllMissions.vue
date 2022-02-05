@@ -28,9 +28,13 @@ export default {
 </script>
 
 <style scoped>
+  .row {
+    width: 2543px;
+  }
+
   .column {
     float: left;
-    width: 33.33%;
+    width: 50%;
     padding: 5px;
   }
 
