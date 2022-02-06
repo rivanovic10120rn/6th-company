@@ -30,6 +30,10 @@ export default new Vuex.Store({
       state.soldiers = allSoldiers;
     },
 
+    getSoldierByID(state, singleSoldier){
+      state.soldier = singleSoldier;
+    },
+
     addLoadouts(state, allLoadouts) {
       state.loadouts = allLoadouts;
     },
@@ -80,6 +84,16 @@ export default new Vuex.Store({
       })
             .then( obj => obj.json() )
             .then( res => commit('addSoldiers', res));
+    },
+
+    fetchSoldierByID({ commit }, id) {
+      fetch(`http://localhost:8080/admin/soldiers/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('getSoldierByID', res) );
     },
 
     fetchSoldiersBySquadID({ commit }, id) {
