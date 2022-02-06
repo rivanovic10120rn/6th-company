@@ -3,7 +3,7 @@
     <Header subtitle="Squads"/>
     <div class="row">
       <div class="column">
-        <img alt="horizontal-drapery" width="750" src="https://pbs.twimg.com/media/EnxljX5W8AACAW2.jpg">
+        <img alt="horizontal-drapery" width="800" src="https://pbs.twimg.com/media/EnxljX5W8AACAW2.jpg">
       </div>
       <div class="column">
         <SquadList />

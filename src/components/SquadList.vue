@@ -1,11 +1,13 @@
 <template>
   <div>
-    <b-pagination
+    <b-pagination class="customPagination"
       v-model="currentPage"
       :total-rows="squads.length"
       :per-page="perPage"
       aria-controls="squad-table"
-    ></b-pagination>
+    >
+      
+    </b-pagination>
     <b-table
       id="squad-table"
       bordered

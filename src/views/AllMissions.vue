@@ -6,23 +6,22 @@
         <img alt="horizontal-drapery" width="625" src="https://warofsigmarus.s3.amazonaws.com/uploads/blogging/picture1/4964/qmJYVuFh36arvtqw.jpg">
       </div>
       <div class="column">
-
+        <MissionList />
       </div>
     </div>
-    
-    
-    <ImageList v-if="imageIDs" :objects="imageIDs" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
+  import MissionList from '@/components/MissionList.vue'
 
 export default {
   name: 'Missions',
   components: {
-    Header
+    Header,
+    MissionList
   }
 }
 </script>
