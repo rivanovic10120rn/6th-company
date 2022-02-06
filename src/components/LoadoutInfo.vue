@@ -1,6 +1,6 @@
 <template>
   <div class="info-sold">
-    <h5 v-if="grenades"><b>Grenades:</b> {{grenades}}</h5>
+    <h5 ><b>Grenades:</b> {{grenades}}</h5>
     <h5 v-if="rangedWeapon"><b>Ranged Weapons:</b> {{rangedWeapon}}</h5>
     <h5 v-if="meleeWeapon"><b>Melee Weapons:</b> {{meleeWeapon}}</h5>
     <h5 v-if="armourType"><b>Armour:</b> {{armourType}}</h5>
@@ -10,7 +10,7 @@
 <script>
 
   export default {
-    name: 'SoldierInfo',
+    name: 'LoadoutInfo',
     props: {
       grenades: Boolean,
       rangedWeapon: String,

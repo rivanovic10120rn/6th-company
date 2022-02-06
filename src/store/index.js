@@ -47,6 +47,10 @@ export default new Vuex.Store({
       state.missions = allMissions;
     },
 
+    getMissionByID(state, singleMission){
+      state.mission = singleMission;
+    },
+
     setToken(state, token) {
       state.token = token;
       localStorage.token = token;
@@ -149,6 +153,16 @@ export default new Vuex.Store({
       })
             .then( obj => obj.json() )
             .then( res => commit('addMissions', res));
+    },
+
+    fetchMissionByID({ commit }, id) {
+      fetch(`http://localhost:8080/admin/missions/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('getMissionByID', res) );
     },
 
     fetchMissionsBySquadID({ commit }, id) {
