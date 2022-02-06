@@ -11,7 +11,8 @@
       bordered
       head-variant="dark"
       hover
-      :items="items"
+      fixed
+      :items="squads"
       :fields="fields"
       small
       :per-page="perPage"
@@ -30,43 +31,57 @@
 
 <script>
 
+  import { mapActions, mapState } from 'vuex';
+
     export default {
         name: 'SquadList',
 
         data() {
           return {
             fields: ['name', 'type', 'status'],
-            items: [],
             currentPage: 1,
             perPage: 10
           }
         },
         
-        props: {
-          squads: Array
-        },
-
-        watch: {
-          currentPage(nVal, oVal) {
-            this.squads.slice(nVal * 10, (nVal + 1) * 10).map( obj => {
-              fetch('http://localhost:8080/admin/squads')
-                .then( obj => obj.json())
-                  .then( res => this.items.push(res));
-            });
-          }
-        },
-
         mounted() {
-          this.squads.slice(this.currentPage * 10, (this.currentPage + 1) * 10).map( obj => {
-            fetch('http://localhost:8080/admin/squads')
-              .then( obj => obj.json())
-                .then( res => this.items.push(res));
-          });
+          this.fetchSquads();
         },
+
+        computed: {
+          ...mapState([
+            'squads'
+          ])
+        },
+
+        // watch: {
+        //   currentPage(nVal, oVal) {
+        //     this.squads.slice(nVal * 10, (nVal + 1) * 10).map( obj => {
+        //       fetch('http://localhost:8080/admin/squads')
+        //         .then( obj => obj.json())
+        //           .then( res => {
+        //             res.forEach( el => this.items.push(el))
+        //           } );
+        //     });
+        //   }
+        // },
+
+        // mounted() {
+        //   this.squads.slice(this.currentPage * 10, (this.currentPage + 1) * 10).map( obj => {
+        //      fetch('http://localhost:8080/admin/squads')
+        //         .then( obj => obj.json())
+        //         .then( res => {
+        //             res.forEach( el => this.items.push(el))
+        //            } );
+        //   });
+        // },
 
         methods: {
+          ...mapActions([
+              'fetchSquads'
+          ]),
           rowClicked(record, index) {
-            this.$router.push({ name: 'Single', params: { id: record.objectID } });
+            this.$router.push({ name: 'SingleSquad', params: { id: record.objectID } });
           }
         }
     }

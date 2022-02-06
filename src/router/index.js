@@ -5,6 +5,7 @@ import AllSquads from '../views/AllSquads.vue'
 import AllSoldiers from '../views/AllSoldiers.vue'
 import AllLoadouts from '../views/AllLoadouts.vue'
 import AllMissions from '../views/AllMissions.vue'
+import Login from '@/views/Login.vue';
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/missions',
     name: 'Missions',
     component: AllMissions
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   }
 ]
 

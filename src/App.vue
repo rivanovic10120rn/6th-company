@@ -8,7 +8,7 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item to="/squads">Overview</b-nav-item>
+            <b-nav-item to="/squads">Squads</b-nav-item>
             <b-nav-item to="/soldiers" >Soldiers</b-nav-item>
             <b-nav-item to="/loadouts">Loadouts</b-nav-item>
             <b-nav-item to="/missions" >Missions</b-nav-item>
@@ -16,14 +16,8 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown right>
-              <!-- Using 'button-content' slot -->
-              <template #button-content>
-                <em>Soldier</em>
-              </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown>
+            <b-nav-item v-if="!token" to="/login">Log In</b-nav-item>
+            <b-nav-item v-else @click="logout()">Log Out</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -34,48 +28,34 @@
 
 <script>
 
-  import Header from '@/components/Header.vue';
-  import SquadList from '@/components/SquadList.vue';
+  import { mapState, mapMutations } from 'vuex';
 
   export default {
     name: 'App',
 
-    components: {
-      Header,
-      SquadList
+    computed: {
+      ...mapState([
+        'token'
+      ])
     },
 
-    data() {
-      return {
-        // id: [],
-        // current: 0
+    mounted() {
+      if (localStorage.token) {
+        this.setToken(localStorage.token);
       }
     },
 
-    // mounted() {
-    //   fetch('http://localhost:8080/admin/squads')
-    //     .then( obj => obj.json() )
-    //       .then( res => {
-    //         res.forEach( data => {
-    //           this.id = data.id;
-    //         })
-    //         console.log(res);
-    //       });
-    // },
-
     methods: {
-      next() {
-        if(this.current * 10 < this.id.length){
-          this.current++;
-        }
-      },
 
-      prev() {
-        if(this.current !== 0){
-          this.current--;
-        }
-      },
-    }
+      ...mapMutations([
+        'removeToken',
+        'setToken'
+      ]),
+
+      logout() {
+        this.removeToken();
+      }
+    },
 
   }
 

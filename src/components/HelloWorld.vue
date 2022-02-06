@@ -57,3 +57,47 @@ a {
   color: #42b983;
 }
 </style>
+
+
+// watch: {
+//           currentPage(nVal, oVal) {
+//             if(this.squads.length < ((nVal + 1) * 10)){
+//               this.squads.slice(nVal * 10, this.squads.length).map( obj => {
+//                 fetch('http://localhost:8080/admin/squads')
+//                   .then( obj => obj.json())
+//                     .then( res => {
+//                       res.forEach( el => this.items.push(el))
+//                     } );
+//               });
+//             }else{
+//               this.squads.slice(nVal * 10, (nVal + 1) * 10).map( obj => {
+//                 fetch('http://localhost:8080/admin/squads')
+//                   .then( obj => obj.json())
+//                     .then( res => {
+//                       res.forEach( el => this.items.push(el))
+//                     } );
+//               });
+//             }
+//           }
+//         },
+
+//         mounted() {
+//           if(this.squads.length < ((this.currentPage + 1) * 10)){
+//             console.log(this.squads.length);
+//             this.squads.slice(this.currentPage * 10, this.squads.length).map( obj => {
+//             fetch('http://localhost:8080/admin/squads')
+//               .then( obj => obj.json())
+//                 .then( res => {
+//                     res.forEach( el => this.items.push(el))
+//                   } );
+//             });
+//           }else{
+//             this.squads.slice(this.currentPage * 10, (this.currentPage + 1) * 10).map( obj => {
+//               fetch('http://localhost:8080/admin/squads')
+//                 .then( obj => obj.json())
+//                   .then( res => {
+//                       res.forEach( el => this.items.push(el))
+//                     } );
+//             });
+//           }
+//         },

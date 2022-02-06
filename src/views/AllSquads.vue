@@ -6,7 +6,7 @@
         <img alt="horizontal-drapery" width="750" src="https://pbs.twimg.com/media/EnxljX5W8AACAW2.jpg">
       </div>
       <div class="column">
-        <SquadList v-if="allSquads" :squads="allSquads" />
+        <SquadList />
       </div>
     </div>
   </div>
@@ -26,29 +26,22 @@
 
     data() {
         return {
-            subtitle: '',
-            allSquads: []
+            subtitle: ''
         }
     },
 
-    // watch: {
-    //   $route() {
-    //     this.subtitle = this.$route.params.name;
-    //     this.depID = this.$route.params.id;
+    
 
-    //   }
-    // },
+    
 
-    mounted() {
-        // this.subtitle = this.$route.params.name;
-        // this.depID = this.$route.params.id;
+    // mounted() {
 
-        fetch('http://localhost:8080/admin/squads')
-            .then( obj => obj.json() )
-            .then( res => {
-              this.allSquads = res;
-            });
-    }
+    //     fetch('http://localhost:8080/admin/squads')
+    //         .then( obj => obj.json() )
+    //         .then( res => {
+    //           res.forEach( el => this.allSquads.push(el))
+    //         } );
+    // }
   }
 </script>
 

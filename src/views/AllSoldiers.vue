@@ -6,25 +6,42 @@
         <img alt="horizontal-drapery" width="550" src="https://warhammerart.com/wp-content/uploads/2018/01/Blood-Angels-Command-Company.jpg">
       </div>
       <div class="column">
-
+        <SoldierList v-if="allSoldiers" :squads="allSoldiers" />
       </div>
     </div>
-    
-    
-    <ImageList v-if="imageIDs" :objects="imageIDs" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from '@/components/Header.vue'
+  // @ is an alias to /src
+  import Header from '@/components/Header.vue'
+  import SoldierList from '@/components/SoldierList.vue'
 
-export default {
-  name: 'Soldiers',
-  components: {
-    Header
+  export default {
+    name: 'Soldiers',
+    components: {
+      Header,
+      SoldierList
+    },
+
+      data() {
+          return {
+              subtitle: '',
+              allSoldiers: []
+          }
+      },
+
+      mounted() {
+
+          fetch('http://localhost:8080/admin/soldiers')
+              .then( obj => obj.json() )
+              .then( res => {
+                res.forEach( el => this.allSoldiers.push(el))
+              } );
+      }
+
+    
   }
-}
 </script>
 
 <style scoped>
