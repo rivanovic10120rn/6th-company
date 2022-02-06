@@ -42,7 +42,7 @@
           return {
             fields: ['name', 'type', 'status'],
             currentPage: 1,
-            perPage: 10
+            perPage: 20
           }
         },
         
@@ -82,8 +82,9 @@
           ...mapActions([
               'fetchSquads'
           ]),
+          
           rowClicked(record, index) {
-            this.$router.push({ name: 'SingleSquad', params: { id: record.objectID } });
+            this.$router.push({ name: 'SingleSquad', params: { id: record.id } });
           }
         }
     }

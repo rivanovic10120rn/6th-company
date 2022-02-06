@@ -1,18 +1,18 @@
 <template>
   <div>
-    <b-pagination
+    <!-- <b-pagination
       v-model="currentPage"
       :total-rows="soldiers.length"
       :per-page="perPage"
-      aria-controls="soldiers-table"
-    ></b-pagination>
+      aria-controls="squadmates-table"
+    ></b-pagination> -->
     <b-table
-      id="soldiers-table"
+      id="assigned-missions-table"
       bordered
       head-variant="dark"
       hover
       fixed
-      :items="soldiers"
+      :items="missions"
       :fields="fields"
       small
       :per-page="perPage"
@@ -20,12 +20,12 @@
       @row-clicked="rowClicked"
     >
     </b-table>
-    <b-pagination
+    <!-- <b-pagination
       v-model="currentPage"
       :total-rows="soldiers.length"
       :per-page="perPage"
-      aria-controls="soldiers-table"
-    ></b-pagination>
+      aria-controls="squadmates-table"
+    ></b-pagination> -->
   </div>
 </template>
 
@@ -34,32 +34,32 @@
     import { mapActions, mapState } from 'vuex';
 
     export default {
-        name: 'SoldierList',
+        name: 'AssignedMissions',
 
         data() {
           return {
-            fields: ['name', 'tag', 'role', 'status'],
+            fields: ['description', 'location', {key:'assignedSquad.name', label:'Assigned Squad'}, 'missionStatus'],
             currentPage: 1,
-            perPage: 20
+            perPage: 10
           }
         },
         
         mounted() {
-          this.fetchSoldiers();
+          this.fetchMissionsBySquadID(this.$route.params.id);
         },
 
         computed: {
           ...mapState([
-            'soldiers'
+            'missions'
           ])
         },
 
         methods: {
           ...mapActions([
-              'fetchSoldiers'
+              'fetchMissionsBySquadID'
           ]),
           rowClicked(record, index) {
-            this.$router.push({ name: 'SingleSoldier', params: { id: record.id } });
+            this.$router.push({ name: 'SingleMission', params: { id: record.id } });
           }
         }
     }
