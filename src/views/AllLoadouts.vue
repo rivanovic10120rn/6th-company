@@ -6,24 +6,30 @@
         <img alt="horizontal-drapery"  src="https://i.pinimg.com/736x/a7/c3/4b/a7c34b1489e0d7a5a463f3e73ebe069f.jpg">
       </div>
       <div class="column">
-
+        <LoadoutList />
       </div>
     </div>
-    
-    
-    <ImageList v-if="imageIDs" :objects="imageIDs" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
+  import LoadoutList from '@/components/LoadoutList.vue'
 
 export default {
   name: 'Loadouts',
   components: {
-    Header
-  }
+    Header,
+    LoadoutList
+  },
+
+  data() {
+      return {
+          subtitle: '',
+      }
+  },
+  
 }
 </script>
 

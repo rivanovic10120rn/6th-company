@@ -2,29 +2,33 @@
   <div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="soldiers.length"
+      :total-rows="loadouts.length"
       :per-page="perPage"
-      aria-controls="soldiers-table"
+      aria-controls="loadouts-table"
     ></b-pagination>
     <b-table
-      id="soldiers-table"
+      id="loadouts-table"
       bordered
       head-variant="dark"
       hover
       fixed
-      :items="soldiers"
+      :items="loadouts"
       :fields="fields"
       small
       :per-page="perPage"
       :current-page="currentPage"
       @row-clicked="rowClicked"
     >
+    <template #cell(hasGrenades)="data">
+        <b-icon v-if="data.value" icon="check-circle" variant="success" scale="1"></b-icon>
+        <b-icon v-else icon="x-circle" variant="danger" scale="1"></b-icon>
+      </template>
     </b-table>
     <b-pagination
       v-model="currentPage"
-      :total-rows="soldiers.length"
+      :total-rows="loadouts.length"
       :per-page="perPage"
-      aria-controls="soldiers-table"
+      aria-controls="loadouts-table"
     ></b-pagination>
   </div>
 </template>
@@ -34,32 +38,32 @@
     import { mapActions, mapState } from 'vuex';
 
     export default {
-        name: 'SoldierList',
+        name: 'LoadoutList',
 
         data() {
           return {
-            fields: ['name', 'tag', 'role', 'status'],
+            fields: ['type', 'rangedWeapon', 'meleeWeapon', 'armourType', { key: 'hasGrenades', tdClass: 'align-middle' }],
             currentPage: 1,
             perPage: 20
           }
         },
         
         mounted() {
-          this.fetchSoldiers();
+          this.fetchLoadouts();
         },
 
         computed: {
           ...mapState([
-            'soldiers'
+            'loadouts'
           ])
         },
 
         methods: {
           ...mapActions([
-              'fetchSoldiers'
+              'fetchLoadouts'
           ]),
           rowClicked(record, index) {
-            this.$router.push({ name: 'SingleSquad', params: { id: record.id } });
+            this.$router.push({ name: 'SingleLoadout', params: { id: record.id } });
           }
         }
     }
