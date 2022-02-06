@@ -10,6 +10,14 @@
         <MissionInfo :description="mission.description" :location="mission.location" :assignedSquad="mission.assignedSquad.name" :missionStatus="mission.missionStatus" />
       </div>
     </div>
+    <div class="row">
+      <div class="column">
+        <img alt="mission fluff" src="http://geniusproductions.co.uk/Cetus/images/d/da/Blood_Angels_Crest.jpg">
+      </div>
+      <div class="column">
+        ovde ce ici svi komentari
+      </div>
+    </div>
 
   </div>
 </template>
