@@ -8,6 +8,7 @@ import AllMissions from '../views/AllMissions.vue'
 import SingleSquad from '../views/SingleSquad.vue'
 import SingleSoldier from '../views/SingleSoldier.vue'
 import SingleMission from '../views/SingleMission.vue'
+import SingleLoadout from '../views/SingleLoadout.vue'
 import Login from '@/views/Login.vue';
 
 Vue.use(VueRouter)
@@ -52,6 +53,11 @@ const routes = [
     path: '/missions/:id',
     name: 'SingleMission',
     component: SingleMission
+  },
+  {
+    path: '/loadouts/:id',
+    name: 'SingleLoadout',
+    component: SingleLoadout
   },
   {
     path: '/login',

@@ -11,6 +11,7 @@ export default new Vuex.Store({
     soldiers: [],
     soldier: [],
     loadouts: [],
+    loadout: [],
     missions: [],
     mission: [],
     token: ''
@@ -36,6 +37,10 @@ export default new Vuex.Store({
 
     addLoadouts(state, allLoadouts) {
       state.loadouts = allLoadouts;
+    },
+
+    getLoadoutByID(state, singleLoadout){
+      state.loadout = singleLoadout;
     },
 
     addMissions(state, allMissions) {
@@ -106,6 +111,16 @@ export default new Vuex.Store({
           .then( res => commit('addSoldiers', res) );
     },
 
+    fetchSoldiersByLoadoutID({ commit }, id) {
+      fetch(`http://localhost:8080/admin/soldiers/loadout/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('addSoldiers', res) );
+    },
+
     fetchLoadouts({ commit }) {
       fetch('http://localhost:8080/admin/loadouts', {
           headers: {
@@ -114,6 +129,16 @@ export default new Vuex.Store({
       })
             .then( obj => obj.json() )
             .then( res => commit('addLoadouts', res));
+    },
+
+    fetchLoadoutByID({ commit }, id) {
+      fetch(`http://localhost:8080/admin/loadouts/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('getLoadoutByID', res) );
     },
 
     fetchMissions({ commit }) {

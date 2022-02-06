@@ -8,7 +8,7 @@
       </div>
       <div class="column">
         <SoldierInfo :tag="soldier.tag" :role="soldier.role" :status="soldier.status" :rangedWeapon="soldier.equippedWith.rangedWeapon" :meleeWeapon="soldier.equippedWith.meleeWeapon" :armourType="soldier.equippedWith.armourType" :squadName="soldier.squad.name" />
-
+        Ovde ce ici lista svih poruka
       </div>
     </div>
 
@@ -28,25 +28,27 @@
           SoldierInfo
         },
 
-        data() {
-          return {
-            subtitle: '',
-            fields: ['tag', 'role', 'status'],
-            tag: soldier.tag,
-            role: soldier.role,
-            status: soldier.status,
-            rangedWeapon: soldier.equippedWith.rangedWeapon,
-            meleeWeapon: soldier.equippedWith.meleeWeapon,
-            armourType: soldier.equippedWith.armourType,
-            squadName: soldier.squad.name
-          }
-        },
-
         computed: {
           ...mapState([
             'soldier'
           ])
         },
+
+        data() {
+          return {
+            subtitle: '',
+            fields: ['tag', 'role', 'status'],
+            tag: '',
+            role: '',
+            status: '',
+            rangedWeapon: '',
+            meleeWeapon: '',
+            armourType: '',
+            squadName: ''
+          }
+        },
+
+        
 
         methods: {
           ...mapActions([
