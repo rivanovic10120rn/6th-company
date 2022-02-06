@@ -4,10 +4,10 @@
       v-model="currentPage"
       :total-rows="squads.length"
       :per-page="perPage"
-      aria-controls="image-table"
+      aria-controls="squad-table"
     ></b-pagination>
     <b-table
-      id="image-table"
+      id="squad-table"
       bordered
       head-variant="dark"
       hover
@@ -24,7 +24,7 @@
       v-model="currentPage"
       :total-rows="squads.length"
       :per-page="perPage"
-      aria-controls="image-table"
+      aria-controls="squad-table"
     ></b-pagination>
   </div>
 </template>

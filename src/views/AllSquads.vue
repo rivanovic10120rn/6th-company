@@ -30,18 +30,6 @@
         }
     },
 
-    
-
-    
-
-    // mounted() {
-
-    //     fetch('http://localhost:8080/admin/squads')
-    //         .then( obj => obj.json() )
-    //         .then( res => {
-    //           res.forEach( el => this.allSquads.push(el))
-    //         } );
-    // }
   }
 </script>
 

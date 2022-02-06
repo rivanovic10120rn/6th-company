@@ -6,7 +6,7 @@
         <img alt="horizontal-drapery" width="550" src="https://warhammerart.com/wp-content/uploads/2018/01/Blood-Angels-Command-Company.jpg">
       </div>
       <div class="column">
-        <SoldierList v-if="allSoldiers" :squads="allSoldiers" />
+        <SoldierList />
       </div>
     </div>
   </div>
@@ -27,19 +27,8 @@
       data() {
           return {
               subtitle: '',
-              allSoldiers: []
           }
       },
-
-      mounted() {
-
-          fetch('http://localhost:8080/admin/soldiers')
-              .then( obj => obj.json() )
-              .then( res => {
-                res.forEach( el => this.allSoldiers.push(el))
-              } );
-      }
-
     
   }
 </script>
