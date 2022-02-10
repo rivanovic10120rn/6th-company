@@ -2,7 +2,7 @@
   <div>
     <b-pagination
       v-model="currentPage"
-      :total-rows="missionThreads.length"
+      :total-rows="missionMissionThreads.length"
       :per-page="perPage"
       aria-controls="missionthreads-table"
     ></b-pagination>
@@ -11,18 +11,20 @@
       bordered
       head-variant="dark"
       hover
-      fixed
-      :items="missionThreads"
+      :items="missionMissionThreads"
       :fields="fields"
       small
       :per-page="perPage"
       :current-page="currentPage"
-      @row-clicked="rowClicked"
     >
+    <template #cell(recieved)="data">
+        <b-icon v-if="data.value" icon="check-circle" variant="success" scale="1"></b-icon>
+        <b-icon v-else icon="x-circle" variant="danger" scale="1"></b-icon>
+      </template>
     </b-table>
     <b-pagination
       v-model="currentPage"
-      :total-rows="missionThreads.length"
+      :total-rows="missionMissionThreads.length"
       :per-page="perPage"
       aria-controls="missionthreads-table"
     ></b-pagination>
@@ -38,31 +40,31 @@
 
         data() {
           return {
-            fields: ['message', 'message status', 'createdAt', 'updatedAt'],
+            fields: ['message', 'recieved', 'createdAt', 'updatedAt'],
             currentPage: 1,
             perPage: 20
           }
         },
         
         mounted() {
-          this.fetchThreads();
-          this.fetchThreadBySoldierID();
-          this.fetchThreadByMissionID();
+        //   this.fetchThreads();
+        //   this.fetchThreadBySoldierID();
+          this.fetchThreadByMissionID(this.$route.params.id);
         },
 
         computed: {
           ...mapState([
-            'missionThreads',
-            'soldierMissionThreads',
+            // 'missionThreads',
+            // 'soldierMissionThreads',
             'missionMissionThreads'
           ])
         },
 
         methods: {
           ...mapActions([
-              'fetchThreads',
-              'fetchThreadsBySoldierID',
-              'fetchThreadsByMissionID'
+            //   'fetchThreads',
+            //   'fetchThreadsBySoldierID',
+              'fetchThreadByMissionID'
           ]),
         }
     }

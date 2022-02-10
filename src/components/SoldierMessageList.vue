@@ -11,13 +11,16 @@
       bordered
       head-variant="dark"
       hover
-      fixed
       :items="soldierThreads"
       :fields="fields"
       small
       :per-page="perPage"
       :current-page="currentPage"
     >
+    <template #cell(recieved)="data">
+        <b-icon v-if="data.value" icon="check-circle" variant="success" scale="1"></b-icon>
+        <b-icon v-else icon="x-circle" variant="danger" scale="1"></b-icon>
+      </template>
     </b-table>
     <b-pagination
       v-model="currentPage"

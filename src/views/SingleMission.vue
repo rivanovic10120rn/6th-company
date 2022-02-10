@@ -15,7 +15,8 @@
         <img alt="mission fluff" width="700" src="http://geniusproductions.co.uk/Cetus/images/d/da/Blood_Angels_Crest.jpg">
       </div>
       <div class="column">
-        ovde ce ici svi komentari
+        <MissionThreadsList />
+        <MissionThreads />
       </div>
     </div>
 
@@ -28,6 +29,8 @@
   import {mapActions, mapState} from "vuex";
   import SquadmatesMission from '@/components/SquadmatesMission.vue'
   import MissionInfo from '@/components/MissionInfo.vue'
+  import MissionThreadsList from '@/components/MissionThreadsList.vue'
+  import MissionThreads from '@/components/MissionThreads.vue'
 
     export default {
         name: 'SingleMission',
@@ -35,7 +38,9 @@
         components: {
           Header,
           SquadmatesMission,
-          MissionInfo
+          MissionInfo,
+          MissionThreadsList,
+          MissionThreads
         },
         
         data() {

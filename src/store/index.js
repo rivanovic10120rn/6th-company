@@ -219,6 +219,23 @@ export default new Vuex.Store({
           .then( res => commit('addMissionMissionThreads', res) );
     },
 
+    postThread({ commit }, obj) {
+      fetch('http://localhost:8080/admin/missionthreads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify(obj)
+      })
+          .then(res => res.json())
+          .then(data => {
+            if(data.msg){
+              swal("Error!", data.msg, "error");
+            }
+      })
+    },
+
     login({ commit }, obj) {
       fetch('http://localhost:9000/api_login', {
         method: 'POST',
