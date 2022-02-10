@@ -13,6 +13,9 @@ export default new Vuex.Store({
     loadouts: [],
     loadout: [],
     missions: [],
+    missionThreads:[],
+    soldierThreads: [],
+    missionMissionThreads: [],
     mission: [],
     token: ''
   },
@@ -20,7 +23,6 @@ export default new Vuex.Store({
 
     addSquads(state, allSquads) {
       state.squads = allSquads;
-      // state.squads.push(allSquads);
     },
 
     getSquadByID(state, singleSquad){
@@ -49,6 +51,18 @@ export default new Vuex.Store({
 
     getMissionByID(state, singleMission){
       state.mission = singleMission;
+    },
+
+    addThread(state, allThreads) {
+      state.missionThreads = allThreads;
+    },
+
+    addSoldierMissionThreads(state, allThreads) {
+      state.soldierThreads = allThreads;
+    },
+
+    addMissionMissionThreads(state, allThreads) {
+      state.missionMissionThreads = allThreads;
     },
 
     setToken(state, token) {
@@ -175,8 +189,38 @@ export default new Vuex.Store({
           .then( res => commit('addMissions', res) );
     },
 
+    fetchThreads({ commit }) {
+      fetch('http://localhost:8080/admin/missionthreads', {
+          headers: {
+              'Authorization': `Bearer ${localStorage.token}`
+          }
+      })
+            .then( obj => obj.json() )
+            .then( res => commit('addThread', res));
+    },
+
+    fetchThreadBySoldierID({ commit }, id) {
+      fetch(`http://localhost:8080/admin/missionthreads/soldier/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('addSoldierMissionThreads', res) );
+    },
+
+    fetchThreadByMissionID({ commit }, id) {
+      fetch(`http://localhost:8080/admin/missionthreads/mission/${id}`,{
+        headers: {
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+      })
+          .then( obj => obj.json() )
+          .then( res => commit('addMissionMissionThreads', res) );
+    },
+
     login({ commit }, obj) {
-      fetch('http://localhost:9000/login', {
+      fetch('http://localhost:9000/api_login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(obj)

@@ -7,8 +7,8 @@
         <img alt="tactical marine" width="850" src="https://www.asgard.gg/wp-content/uploads/2018/12/332_573355124bf35.jpg">
       </div>
       <div class="column">
-        <SoldierInfo :tag="soldier.tag" :role="soldier.role" :status="soldier.status" :rangedWeapon="soldier.equippedWith.rangedWeapon" :meleeWeapon="soldier.equippedWith.meleeWeapon" :armourType="soldier.equippedWith.armourType" :squadName="soldier.squad.name" />
-        Ovde ce ici lista svih poruka
+        <SoldierInfo :squadID="soldier.SquadID" :tag="soldier.tag" :role="soldier.role" :status="soldier.status" :rangedWeapon="soldier.equippedWith.rangedWeapon" :meleeWeapon="soldier.equippedWith.meleeWeapon" :armourType="soldier.equippedWith.armourType" :squadName="soldier.squad.name" />
+        <SoldierMessageList />
       </div>
     </div>
 
@@ -18,6 +18,7 @@
 <script>
   import Header from '@/components/Header.vue';
   import SoldierInfo from '@/components/SoldierInfo.vue'
+  import SoldierMessageList from '@/components/SoldierMessageList.vue'
   import {mapActions, mapState} from "vuex";
 
     export default {
@@ -25,7 +26,8 @@
 
         components: {
           Header,
-          SoldierInfo
+          SoldierInfo,
+          SoldierMessageList
         },
 
         computed: {
@@ -38,6 +40,7 @@
           return {
             subtitle: '',
             fields: ['tag', 'role', 'status'],
+            squadID: 0,
             tag: '',
             role: '',
             status: '',

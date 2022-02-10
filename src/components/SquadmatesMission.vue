@@ -37,7 +37,7 @@
     export default {
         name: 'SquadmatesMission',
         props: {
-          squadID: String
+          squadID: Number
         },
 
         data() {

@@ -2,6 +2,7 @@
   <div>
     <Header :subtitle="squad.name" />
     <Squadmates />
+    <h2> ASSIGNED TO MISSIONS: </h2>
     <AssignedMissions />
     <img alt="generic-shooting-pose" width="850" src="https://www.warhammer-community.com/wp-content/uploads/2020/07/Eq57vMH2uu3HpA0W.jpg">
   </div>

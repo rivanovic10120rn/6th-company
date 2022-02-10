@@ -1,18 +1,18 @@
 <template>
   <div>
-    <Header subtitle="For Sanguinius" />
+    <Header subtitle="FOR THE EMPEROR AND SANGUINIUS" />
 
     <div class="row">
       <div class="column">
         <SquadmatesMission :squadID="mission.assignedSquad.id"/>
       </div>
       <div class="column">
-        <MissionInfo :description="mission.description" :location="mission.location" :assignedSquad="mission.assignedSquad.name" :missionStatus="mission.missionStatus" />
+        <MissionInfo :squadID="mission.assignedSquad.id" :description="mission.description" :location="mission.location" :assignedSquad="mission.assignedSquad.name" :missionStatus="mission.missionStatus" />
       </div>
     </div>
     <div class="row">
       <div class="column">
-        <img alt="mission fluff" src="http://geniusproductions.co.uk/Cetus/images/d/da/Blood_Angels_Crest.jpg">
+        <img alt="mission fluff" width="700" src="http://geniusproductions.co.uk/Cetus/images/d/da/Blood_Angels_Crest.jpg">
       </div>
       <div class="column">
         ovde ce ici svi komentari
@@ -41,6 +41,7 @@
         data() {
           return {
             subtitle: '',
+            squadID: 0,
             description: '',
             location: '',
             assignedSquad: '',
